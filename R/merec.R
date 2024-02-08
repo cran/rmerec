@@ -79,7 +79,10 @@ merec_weights <- function(data, alternatives, optimizations) {
     # Determine the MEREC weight of each criteria - wj vector
 
     wj <- matrix(0, jmax, 1)
-    wj <- round(Ej / sum(Ej),4)
+    wj <- Ej / sum(Ej)
+
+    wj_norm <- wj / sum(wj)
+    wj <- wj_norm
 
     return(list("wj"= wj, "nij" = nij, "Si" = Si, "Sij" = Sij, "Ej" = Ej))
   },
